@@ -125,6 +125,39 @@
         if (screen.orientation && screen.orientation.lock) {
           screen.orientation.lock('landscape').catch(function(e){});
         }
+<<<<<<< HEAD
+=======
+        // ページロード時にフルスクリーン
+        window.addEventListener('load', function() {
+          requestFullScreen(canvas);
+        });
+        // ユーザー操作時にもフルスクリーン
+        canvas.addEventListener('touchend', function() {
+          requestFullScreen(canvas);
+        });
+
+        // Canvasサイズを画面サイズに合わせる
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Unityの設定でCanvasサイズを動的に
+        config.matchWebGLToCanvasSize = true;
+
+        // 画面回転時にも対応
+        window.addEventListener('orientationchange', function() {
+          setTimeout(function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+          }, 100);
+        });
+
+        // リサイズ時にも対応
+        window.addEventListener('resize', function() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        });
+
+>>>>>>> 72c578253a3e6ccf9af3183d1109bc62b461527a
 
       } else {
         canvas.style.width = "1280px";
